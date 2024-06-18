@@ -246,7 +246,7 @@ class interval(with_metaclass(Metaclass, tuple)):
     def min(x, y):
         return (fpu.down(lambda: min(x.inf, y.inf)), fpu.up(lambda: min(x.sup, y.sup)))
 
-    @compy_by_comp
+    @comp_by_comp
     def max(x, y):
         return (fpu.down(lambda: max(x.inf, y.inf)), fpu.up(lambda: max(x.sup, y.sup)))
         
