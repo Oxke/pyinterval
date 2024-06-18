@@ -243,6 +243,14 @@ class interval(with_metaclass(Metaclass, tuple)):
         return self.new(self.Component(-x.sup, -x.inf) for x in self)
 
     @comp_by_comp
+    def min(x, y):
+        return (fpu.down(lambda: min(x.inf, y.inf)), fpu.up(lambda: min(x.sup, y.sup)))
+
+    @compy_by_comp
+    def max(x, y):
+        return (fpu.down(lambda: max(x.inf, y.inf)), fpu.up(lambda: max(x.sup, y.sup)))
+        
+    @comp_by_comp
     def __add__(x, y):
         return (fpu.down(lambda: x.inf + y.inf), fpu.up(lambda: x.sup + y.sup))
 
